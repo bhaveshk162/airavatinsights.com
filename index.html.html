@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Airavat Insights — Political Intelligence & Communications</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;600;700&family=Saira+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1B2B4B;
+    --navy-deep: #111E35;
+    --navy-mid: #243559;
+    --navy-light: #2D4070;
+    --orange: #E8721C;
+    --orange-muted: #C25E12;
+    --ink: #F0EFE9;
+    --muted: #8A9BB5;
+    --dim: #4A5D7A;
+    --rule: rgba(255,255,255,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy-deep);
+    color: var(--ink);
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(17, 30, 53, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--rule);
+    padding: 0 5vw;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-wordmark {
+    line-height: 1.2;
+  }
+
+  .nav-wordmark .a { color: #fff; font-family: 'Saira Condensed', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.18em; }
+  .nav-wordmark .b { color: var(--orange); font-family: 'Saira Condensed', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 0.2em; display: block; margin-top: 1px; }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-cta {
+    color: var(--orange) !important;
+    border: 0.5px solid var(--orange);
+    padding: 6px 16px;
+    border-radius: 2px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    padding: 120px 5vw 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(232,114,28,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--orange);
+  }
+
+  .hero h1 {
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(42px, 5vw, 68px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 span { color: var(--orange); }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 460px;
+  }
+
+  .hero-rule {
+    width: 40px;
+    height: 2px;
+    background: var(--orange);
+    margin-bottom: 24px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .hero-cta:hover { background: var(--orange-muted); }
+
+  .hero-logo-large {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.9;
+  }
+
+  /* MANTRA STRIP */
+  .mantra-strip {
+    background: var(--navy-mid);
+    border-top: 0.5px solid var(--rule);
+    border-bottom: 0.5px solid var(--rule);
+    padding: 20px 5vw;
+    text-align: center;
+  }
+
+  .mantra-strip p {
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 13px;
+    color: var(--dim);
+    letter-spacing: 0.15em;
+  }
+
+  .mantra-strip span { color: var(--muted); }
+
+  /* SECTIONS */
+  section {
+    padding: 100px 5vw;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--orange);
+  }
+
+  .section-heading {
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 3.5vw, 44px);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .section-heading span { color: var(--orange); }
+
+  .section-body {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 60px;
+  }
+
+  /* WHAT WE DO */
+  #what { background: var(--navy-deep); }
+
+  .what-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 0.5px solid var(--rule);
+  }
+
+  .what-card {
+    background: var(--navy);
+    padding: 36px 28px;
+    position: relative;
+  }
+
+  .what-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 28px;
+    width: 0;
+    height: 2px;
+    background: var(--orange);
+    transition: width 0.3s;
+  }
+
+  .what-card:hover::after { width: calc(100% - 56px); }
+
+  .what-num {
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .what-title {
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+
+  .what-body {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* HOW WE WORK */
+  #how { background: var(--navy); }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .how-left p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .how-left p strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .how-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 0.5px solid var(--rule);
+    padding-left: 40px;
+  }
+
+  .how-item {
+    padding: 24px 0;
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  .how-item:first-child { padding-top: 0; }
+
+  .how-label {
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .how-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* PRINCIPLES */
+  #principles { background: var(--navy-deep); }
+
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .principle-card {
+    background: var(--navy);
+    border: 0.5px solid var(--rule);
+    padding: 28px 24px;
+    border-radius: 2px;
+  }
+
+  .principle-icon {
+    width: 32px;
+    height: 2px;
+    background: var(--orange);
+    margin-bottom: 20px;
+  }
+
+  .principle-title {
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+  }
+
+  .principle-body {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--navy);
+    border-top: 0.5px solid var(--rule);
+  }
+
+  .contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-left .section-body { margin-bottom: 0; }
+
+  .contact-details {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 0.5px solid var(--rule);
+    align-items: flex-start;
+  }
+
+  .contact-item:first-child { border-top: 0.5px solid var(--rule); }
+
+  .contact-label {
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    text-transform: uppercase;
+    min-width: 70px;
+    padding-top: 3px;
+  }
+
+  .contact-value {
+    font-size: 14px;
+    color: var(--ink);
+    text-decoration: none;
+    line-height: 1.6;
+  }
+
+  .contact-value:hover { color: var(--orange); }
+
+  .contact-right {
+    background: var(--navy-mid);
+    border: 0.5px solid var(--rule);
+    padding: 40px;
+    border-radius: 2px;
+  }
+
+  .contact-right h3 {
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .contact-right p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .contact-field {
+    margin-bottom: 16px;
+  }
+
+  .contact-field label {
+    display: block;
+    font-family: 'Saira Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .contact-field input,
+  .contact-field textarea {
+    width: 100%;
+    background: var(--navy);
+    border: 0.5px solid var(--rule);
+    color: var(--ink);
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 14px;
+    padding: 10px 14px;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+
+  .contact-field input:focus,
+  .contact-field textarea:focus {
+    border-color: var(--orange);
+  }
+
+  .contact-submit {
+    width: 100%;
+    background: var(--orange);
+    color: #fff;
+    border: none;
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 14px;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+  }
+
+  .contact-submit:hover { background: var(--orange-muted); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy-deep);
+    border-top: 0.5px solid var(--rule);
+    padding: 32px 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    font-size: 12px;
+    color: var(--dim);
+    font-family: 'Saira Condensed', sans-serif;
+    letter-spacing: 0.1em;
+  }
+
+  .footer-mantra {
+    font-size: 11px;
+    color: var(--dim);
+    font-family: 'Saira Condensed', sans-serif;
+    letter-spacing: 0.15em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-logo-large { display: none; }
+    .what-grid { grid-template-columns: 1fr; }
+    .how-grid { grid-template-columns: 1fr; }
+    .principles-grid { grid-template-columns: 1fr 1fr; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg width="36" height="34" viewBox="0 0 58 52" fill="none">
+      <ellipse cx="11" cy="23" rx="10" ry="12" fill="#1A3050"/>
+      <ellipse cx="47" cy="23" rx="10" ry="12" fill="#1A3050"/>
+      <ellipse cx="29" cy="21" rx="20" ry="20" fill="#1A3050"/>
+      <circle cx="22" cy="15" r="3" fill="#E8721C"/>
+      <circle cx="36" cy="15" r="3" fill="#E8721C"/>
+      <path d="M 25 37 C 23 45 29 49 34 45" stroke="#E8721C" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M 20 36 C 16 43 19 48 23 45" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <path d="M 38 36 C 42 43 39 48 35 45" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div class="nav-wordmark">
+      <div class="a">AIRAVAT</div>
+      <span class="b">INSIGHTS</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#what">Capabilities</a></li>
+    <li><a href="#how">Approach</a></li>
+    <li><a href="#principles">Principles</a></li>
+    <li><a href="#contact" class="nav-cta">Engage</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Political Consultancy</div>
+      <h1>Strategy.<br>Research.<br><span>Communications.</span></h1>
+      <div class="hero-rule"></div>
+      <p class="hero-sub">Airavat Insights is a political consultancy based in India. We work with political leaders, parties, and governments on research, strategy, and communications.</p>
+      <a href="#contact" class="hero-cta">Get in touch</a>
+    </div>
+    <div class="hero-logo-large">
+      <svg width="260" height="240" viewBox="0 0 58 52" fill="none" opacity="0.18">
+        <ellipse cx="11" cy="23" rx="10" ry="12" fill="#8A9BB5"/>
+        <ellipse cx="47" cy="23" rx="10" ry="12" fill="#8A9BB5"/>
+        <ellipse cx="29" cy="21" rx="20" ry="20" fill="#8A9BB5"/>
+        <circle cx="22" cy="15" r="3" fill="#E8721C"/>
+        <circle cx="36" cy="15" r="3" fill="#E8721C"/>
+        <path d="M 25 37 C 23 45 29 49 34 45" stroke="#E8721C" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M 20 36 C 16 43 19 48 23 45" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M 38 36 C 42 43 39 48 35 45" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- MANTRA STRIP -->
+<div class="mantra-strip">
+  <p>ओम् एं इन्द्राय नमः &nbsp;·&nbsp; <span>Om Aim Indraya Namah</span> &nbsp;·&nbsp; Six Pillars. One Platform.</p>
+</div>
+
+<!-- ABOUT -->
+<section id="about" style="background: var(--navy);">
+  <div class="section-inner" style="max-width: 700px;">
+    <div class="section-eyebrow">About</div>
+    <h2 class="section-heading">Who we are</h2>
+    <p style="font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 20px;">Airavat Insights is a political consultancy based in India. We work with political parties, leaders, and institutions on research, strategy, and communications.</p>
+    <p style="font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 20px;">Our work spans the full political cycle — from day-to-day advisory to election campaigns. We don't discuss clients or engagements publicly.</p>
+    <p style="font-size: 15px; color: var(--muted); line-height: 1.9;">We are India-focused and built specifically for the complexity of Indian politics.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="section-eyebrow">Contact</div>
+      <h2 class="section-heading">The conversation<br>starts <span>here.</span></h2>
+      <p class="section-body">If you are looking for a political consultancy, get in touch. We'll have a straightforward conversation about whether we're the right fit.</p>
+
+      <div class="contact-details">
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <a href="mailto:contact@airavatinsights.com" class="contact-value">contact@airavatinsights.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Phone</span>
+          <a href="tel:+917836975363" class="contact-value">+91 78369 75363</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Location</span>
+          <span class="contact-value">New Delhi · Patna</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Entity</span>
+          <span class="contact-value">Airavat Insights Private Limited</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <h3>Get in touch</h3>
+      <p>Tell us briefly what you're working on. We'll respond within 24 hours.</p>
+      <div class="contact-field">
+        <label>Your name</label>
+        <input type="text" placeholder="Name">
+      </div>
+      <div class="contact-field">
+        <label>Contact</label>
+        <input type="text" placeholder="Email or phone">
+      </div>
+      <div class="contact-field">
+        <label>Organisation</label>
+        <input type="text" placeholder="Party, institution, or company">
+      </div>
+      <div class="contact-field">
+        <label>What are you working on</label>
+        <textarea rows="4" placeholder="Briefly describe the engagement or enquiry"></textarea>
+      </div>
+      <button class="contact-submit">Send message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2026 Airavat Insights Private Limited. All rights reserved.</div>
+  <div class="footer-mantra">ओम् एं इन्द्राय नमः</div>
+</footer>
+
+</body>
+</html>
